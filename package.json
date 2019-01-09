@@ -1,0 +1,29 @@
+{
+  "name": "chooseyouradventure",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mggude/ChooseYourAdventure.git"
+  },
+  "keywords": [
+    "zoo",
+    "adventure",
+    "game"
+  ],
+  "author": "Caleb Colon, Grace Gude, Kyle Durigan, Connor Jaksik, Anna Sippel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mggude/ChooseYourAdventure/issues"
+  },
+  "homepage": "https://github.com/mggude/ChooseYourAdventure#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "mysql": "^2.16.0"
+  }
+}
