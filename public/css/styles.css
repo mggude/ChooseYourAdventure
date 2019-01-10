@@ -1,0 +1,19 @@
+h1 {
+    font-family: 'Abril Fatface', cursive;
+    font-size: 15vw;
+    color: aqua;
+}
+
+h3, h5 {
+    font-family: 'Staatliches', cursive;
+}
+
+footer {
+    padding: 20px 10px;
+    font-size: 12px;
+    color: #ffffff;
+    text-align: center;
+    background: #353a3f;
+    border-top: 3px solid aqua;
+    height: 30px;
+  }
