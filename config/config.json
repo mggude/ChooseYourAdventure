@@ -2,22 +2,25 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "database_development",
+    "database": "scoreDB",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "port": 8889
   },
   "test": {
     "username": "root",
-    "password": null,
-    "database": "database_test",
+    "password": "root",
+    "database": "scoreDB",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "port": 8889
   },
   "production": {
     "username": "root",
-    "password": null,
-    "database": "database_production",
+    "password": "root",
+    "database": "scoreDB",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "port": 8889
   }
 }
