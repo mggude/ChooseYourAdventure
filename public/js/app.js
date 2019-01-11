@@ -64,13 +64,13 @@ var characterArray = [
         name: "Giraffe",
         alive: true,
         active: true,
-        staticImg: "",
+        staticImg: "./assets/placeHolderImages/bearStatic.png",
         animatedImg: "",
         cagedImg: "",
         scene: [
             {
                 answered: false,
-                backgroundImg: "",
+                backgroundImg: "./assets/placeHolderImages/forkForest.jpg",
                 question: "The zoo's head zoo keeper, William MonteHue, is locking up for the night and accidentally forgets to lock your cage. With mixed feelings, you’re is faced with a tough decision: stay in your cage and hope for extra food in the morning, or do you risk it all and make a run for your freedom?",
                 answerTrue: "You kick open your cage with enthusiasm and make a gallop past all the other zoo animals. As the breeze hits you in the face, you get your first taste of freedom!",
                 answerFalse: "You decide to stay loyal to Zoo-Keeper MonteHue. As the sun rises, William walks to your cage when he realizes he mistakenly left your cage open. Upon relizing your loyalty, Zoo-Keeper MonteHue gives you a head scratch and overfills your food bucket with extra food. 'Thank you' He says. As guests arrive to the park, you see a young child with a Giraffe T-Shirt on. He points and throws a extra large wad of double-bubble bubblegum to you and claps. Feeling happy about how the day is going, you pick pick up the bubblegum and start to chew. As the minty flavor explodes on your taste buds, time slows down and you realize you're choking. In the last moments of conciousness, all you remember is that damn kid and the minty flavors of death. You die a terrible death in the spotlight of hundreds of visitors and later become the trending meme on reddit.",
@@ -142,7 +142,37 @@ var snatchRendered = false;
 var arrowKeyPressed = false;
 var gameText;
 
+//====================TIMER AND SCORE===============================================================
 
+var intervalId;
+   var questionTimer = 10;
+   var points = 0;
+
+   
+function gameTimer () {
+    questionTimer = 10;
+    intervalId = setInterval (decrement, 1000);
+    function decrement () {
+        questionTimer--;
+        document.getElementById("timerDisplay").innerHTML = questionTimer;
+        console.log("timer " + questionTimer);
+        if (questionTimer ===0) {
+            clearInterval(intervalId);
+            console.log("Timer is done")
+        }
+    }
+}
+
+// set up score function to add to global variable: DONE
+    // each question awards 100 points as a base
+    // use remaining time as a multiplier (9 seconds remaining = 9x multiplier. ex: 100pts * 9sec = 900pts)   
+function score () {
+    console.log("points beginning: " + points);
+    points = parseInt(points + (100 * questionTimer));
+    document.getElementById("scoreDisplay").textContent = points;
+    console.log("updated points: " + points);
+}
+//==================================================================================
 //Selecting the chosen character from the array by looping through array until character.active == true
 function selectCharacter() {
     for (var i = 0; i < characterArray.length; i++) {
@@ -177,7 +207,7 @@ function createScene() {
 
 //This function creates the bandersnatch screen
 function renderSnatch() {
-    characterComponent = new Component(0, 0, "images/bearStatic.png", 10, 400, "image");
+    characterComponent = new Component(0, 0, currentCharacter.staticImg, 10, 400, "image");
     background = new Component(1400, 600, "black", 0, 0, "color");
     optionOne = new Component(600, 600, currentScene.choiceOneImg, 100, 50, "image");
     optionTwo = new Component(600, 600, currentScene.choiceTwoImg, 700, 50, "image");
