@@ -1,15 +1,39 @@
+* {
+    font-family: 'Staatliches', cursive;
+}
+
 body {
     background: black;
 }
-h1 {
-    color: white;
-    text-align: center;
-    font-size: 80px;
-    margin-top: 10px;
-    margin-bottom: 10px;
 
-}
-#canvas {
-    margin: 40px;
+h1 {
+    font-family: 'Abril Fatface', cursive;
+    font-size: 15vw;
+    color: aqua;
     margin-top: 0;
 }
+
+h5 {
+    color: yellow;
+}
+
+/* Connor, is the below to work with the h1? I feel like we don't need an h1 on the game page. I think the bootstrap code will accomplish anything else */
+/* #canvas {
+    margin: 40px;
+    margin-top: 0;
+} */
+
+.main-wrapper {
+    height: 100vh;  
+}
+
+.character {
+    height: 33vw;
+}
+
+.nav-link {
+    padding: 20px 20px 0 20px;
+}
+
+
+
