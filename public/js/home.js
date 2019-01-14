@@ -10,7 +10,7 @@ var characterArray = [
         staticImg: "./assets/images/characters/animated/animated_giraffe.png",
         animatedImg: "./assets/images/characters/animated/animated_giraffe.png",
         cagedImg: "./assets/images/characters/caged/caged.png",
-        question: "The zoo's head zoo keeper, William MonteHue, is locking up for the night and accidentally forgets to lock your cage. With mixed feelings, you’re is faced with a tough decision: stay in your cage and hope for extra food in the morning, or do you risk it all and make a run for your freedom?",
+        question: "The zoo's head zoo keeper, William MonteHue, is locking up for the night and accidentally forgets to lock your cage. With mixed feelings, you’re faced with a tough decision: stay in your cage and hope for extra food in the morning, or do you risk it all and make a run for your freedom?",
     },
     {
         name: "Bear",
@@ -42,7 +42,7 @@ function Img(width, height, source) {
     this.image.setAttribute("id", imgId);
     this.image.setAttribute("class", "characterImg")
     this.image.setAttribute("style", "margin-left: 150px; margin-right: 150px; margin-top: 50px;")
-    document.getElementById("images").appendChild(this.image);
+    document.getElementById("images").appendChild(this.image); }
 
 function renderCharacterImages() {
     for (var i=0; i<characterArray.length; i++) {
