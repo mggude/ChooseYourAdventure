@@ -16,11 +16,8 @@
     "port": 8889
   },
   "production": {
-    "username": "root",
-    "password": "root",
-    "database": "scoreDB",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "port": 8889
+      "use_env_variable" : "JAWSDB_URL",
+      "dialect" : "mysql"
+    
   }
 }
