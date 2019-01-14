@@ -21,3 +21,7 @@ footer {
     border-top: 3px solid aqua;
     height: 30px;
   }
+
+ .characterImg {
+     padding: 200px;
+ }
