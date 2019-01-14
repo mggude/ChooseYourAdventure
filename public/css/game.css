@@ -27,7 +27,7 @@ h5 {
     height: 100vh;  
 }
 
-.character {
+.character, #images {
     height: 33vw;
 }
 
