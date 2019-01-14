@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     console.log("DOM fully loaded and parsed");
         setLocalStoarge();
 });
+
 var characterArray = [
     {
         name: "Giraffe",
@@ -10,7 +11,7 @@ var characterArray = [
         staticImg: "./assets/images/characters/animated/animated_giraffe.png",
         animatedImg: "./assets/images/characters/animated/animated_giraffe.png",
         cagedImg: "./assets/images/characters/caged/caged.png",
-        question: "The zoo's head zoo keeper, William MonteHue, is locking up for the night and accidentally forgets to lock your cage. With mixed feelings, you’re is faced with a tough decision: stay in your cage and hope for extra food in the morning, or do you risk it all and make a run for your freedom?",
+        question: "It’s a normal day at the Zoo… that is, until closing time. Head Zoo-Keeper William Montague forgets to lock your cage for the night! With mixed feelings, you’re faced with a tough decision: live a meaningless existence in the zoo, or risk it all and escape?",
     },
     {
         name: "Bear",
@@ -23,11 +24,13 @@ var characterArray = [
         ]
     }
 ];
+
 var charactersUnlocked = 0;
 var currentCharacter;
 var currentSceneId;
 var imgId = 0;
 var modalRendered = false;
+
 function setLocalStoarge() {
     console.log("Set Local Storage Called")
     localStorage.clear();
@@ -37,6 +40,7 @@ function setLocalStoarge() {
     localStorage.setItem("score", 0);
     renderCharacterImages();
 }
+
 function Img(width, height, source) {
     this.image = new Image(width, height);
     this.image.src = source;
@@ -45,6 +49,7 @@ function Img(width, height, source) {
     this.image.setAttribute("style", "margin-left: 150px; margin-right: 150px; margin-top: 50px;")
     document.getElementById("images").appendChild(this.image);
 }
+
 function renderCharacterImages() {
     for (var i=0; i<characterArray.length; i++) {
         imgId = i;
@@ -57,6 +62,7 @@ function renderCharacterImages() {
         characterImg = new Img(200, 400, imgSource)
     }
 }
+
 document.addEventListener("click", function(value) {
     console.log("img id: ", value.target.id);
     if (!modalRendered) {
@@ -77,5 +83,5 @@ document.addEventListener("click", function(value) {
 })
 
 document.getElementById("continue").addEventListener("click", function() {
-    return window.location.href = "./bandersnatch.html";
+    return location.replace("../bandersnatch.html")
 })

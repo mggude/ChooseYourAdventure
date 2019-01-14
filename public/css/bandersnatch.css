@@ -6,7 +6,13 @@ h1 {
 h3, h5, .timerDiv {
     font-family: 'Staatliches', cursive;
 }
-footer {
+h2 {
+    padding: 20px;
+}
+.options {
+    font-size: 40px;
+}
+/* footer {
     padding: 20px 10px;
     font-size: 12px;
     color: #ffffff;
@@ -14,9 +20,10 @@ footer {
     background: #353a3f;
     border-top: 3px solid aqua;
     height: 30px;
-  }
+  } */
 body{
     background: black;
+    font-family: 'Staatliches', cursive;
 }
 /* #clearfix::after {
     Content: "";
