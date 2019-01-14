@@ -99,8 +99,10 @@ function checkAnswer () {
 
     if (userInput === characterArray[currentCharacterValue].scene[currentScene].correctAnswer) {
         console.log("Correct answer!");
+
         clearInterval(intervalId);
         points();
+        return window.location.href = "./game.html";
     } else if (userInput !== characterArray[currentCharacterValue].scene[currentScene].correctAnswer) {
         console.log("WRONG answer!");
         clearInterval(intervalId);

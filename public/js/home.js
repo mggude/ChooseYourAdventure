@@ -37,6 +37,7 @@ function setLocalStoarge() {
     localStorage.setItem("charactersUnlocked", 0);
     localStorage.setItem("currentCharacter", 0);
     localStorage.setItem("currentSceneId", 0);
+    localStorage.setItem("score", 0);
     renderCharacterImages();
 }
 
@@ -47,7 +48,6 @@ function Img(width, height, source) {
     this.image.setAttribute("class", "characterImg")
     this.image.setAttribute("style", "margin-left: 150px; margin-right: 150px; margin-top: 50px;")
     document.getElementById("images").appendChild(this.image);
-
 }
 
 function renderCharacterImages() {
