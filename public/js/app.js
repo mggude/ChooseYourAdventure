@@ -113,6 +113,8 @@ function createScene() {
 
 function renderSnatch() {
     console.log("render snatch called");
+    currentSceneId ++;
+    localStorage.setItem("currentSceneId", currentSceneId);
     window.location.href = "./bandersnatch.html";
 }
 
@@ -141,7 +143,6 @@ function upDateCanvas() {
         characterComponent.update();
         endPage.newPos();
         endPage.update();
-        gameText.update();
     }
 }
 //=====================================EVENT LISTENERS===========================================================
