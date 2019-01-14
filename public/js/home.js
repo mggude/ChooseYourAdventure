@@ -72,12 +72,16 @@ document.addEventListener("click", function(value) {
             modalRendered = true;
             document.getElementById("id01").style.display="block";
             console.log(currentCharacter.question);
-            var h = document.createElement("p");
-            var t = document.createTextNode(currentCharacter.question);
-            h.appendChild(t);
-            return document.getElementById("modalBody").appendChild(h);
+            var characterName = document.createTextNode(currentCharacter.name)
+            var question = document.createTextNode(currentCharacter.question);
+            document.getElementById("modalHeader").appendChild(characterName);
+            return document.getElementById("modalBody").appendChild(question);
        } else {
            return alert("This character is locked, please select an unlocked character to play the game.");
        }
     }
+})
+
+document.getElementById("continue").addEventListener("click", function() {
+    return location.replace("file:///C:/Users/conno/Desktop/github/ChooseYourAdventure/public/gametest.html")
 })
