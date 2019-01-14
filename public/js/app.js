@@ -2,8 +2,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     console.log("DOM fully loaded and parsed");
     if (localStorage.getItem("currentSceneId")) {
         return selectCharacter();
-    } else {
-        setLocalStoarge();
     }
 });
 
@@ -91,15 +89,6 @@ var snatchRendered = false;
 var arrowKeyPressed = false;
 var gameText;
 
-//==================INITIAL LOCAL STORAGE CONFIGURATION==================
-
-function setLocalStoarge() {
-    console.log("Set Local Storage Called")
-    localStorage.clear();
-    localStorage.setItem("currentCharacter", 0);
-    localStorage.setItem("currentSceneId", 0);
-    selectCharacter();
-}
 //==========================Game Play Functions========================================================
 function selectCharacter() {
     currentCharacter = characterArray[(localStorage.getItem("currentCharacter"))];
@@ -116,30 +105,15 @@ function selectScene() {
 
 function createScene() {
     snatchRendered = false;
-    characterComponent = new Component(240, 240, currentCharacter.staticImg, 10, 400, "image");
-    endPage = new Component(1, 500, currentCharacter.staticImg, 1399, 0, "image");
-    gameText = new Component("30px", currentScene.question, "black", 280, 40, "text");
-    background = new Component(1400, 600, currentScene.backgroundImg, 0, 0, "background");
+    characterComponent = new Component(240, 240, currentCharacter.staticImg, 10, 505, "image");
+    endPage = new Component(1, 500, currentCharacter.staticImg, 1401, 0, "image");
+    background = new Component(1500, 800, currentScene.backgroundImg, 0, 0, "background");
     gameCanvas.start();
 }
 
 function renderSnatch() {
     console.log("render snatch called");
-    location.replace("file:///C:/Users/conno/Desktop/github/ChooseYourAdventure/public/bandertest.html")
-}
-
-function userInputValidation() {
-    if (userInput == currentScene.correctAnswer) {
-        console.log("You Chose Correctly");
-        currentSceneId ++;
-        localStorage.setItem("currentSceneId", currentSceneId);
-        console.log(currentSceneId);
-    } else {
-        currentSceneId = currentScene.incorrectResult;
-        localStorage.setItem("currentSceneId", currentSceneId);
-    }
-    return location.replace("file:///C:/Users/conno/Desktop/github/ChooseYourAdventure/public/gametest.html")
-
+    window.location.href = "./bandersnatch.html";
 }
 
 //This function is called every 20 miliseconds to reflect any component position changes
@@ -183,31 +157,14 @@ window.addEventListener('keyup', function (e) {
     return arrowKeyPressed = false;
 })
 
-//BanderSnatch Choice Selection Event Listener
-document.getElementById("choiceOne").addEventListener("click", function() {
-    console.log("Choice One Selected");
-    userInput = "choiceOne";
-    userInputValidation();
-})
-
-document.getElementById("choiceTwo").addEventListener("click", function() {
-    console.log("Choice Two Selected");
-    userInput = "choiceTwo";
-    userInputValidation();
-})
-
-document.getElementById("clear").addEventListener("click", function() {
-    localStorage.clear();
-    console.log("local storage cleared");
-})
 
 //=============================================Making Game Canvas Here====================================================
 var gameCanvas = {
     // The HTML <canvas> element is used to draw graphics on a web page.
     canvas: document.createElement("canvas"),
     start: function () {
-        this.canvas.width = 1400;
-        this.canvas.height = 600;
+        this.canvas.width = 1500;
+        this.canvas.height = 800;
         // The getContext() method returns an object that provides methods and properties for drawing on the canvas.
         // This reference will cover the properties and methods of the getContext("2d") object, which can be used to draw text, lines, boxes, circles, and more - on the canvas.
         this.context = this.canvas.getContext("2d");

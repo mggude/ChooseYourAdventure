@@ -43,7 +43,7 @@ function Img(width, height, source) {
     this.image.setAttribute("class", "characterImg")
     this.image.setAttribute("style", "margin-left: 150px; margin-right: 150px; margin-top: 50px;")
     document.getElementById("images").appendChild(this.image);
-}
+
 function renderCharacterImages() {
     for (var i=0; i<characterArray.length; i++) {
         imgId = i;
@@ -74,6 +74,7 @@ document.addEventListener("click", function(value) {
        }
     }
 })
+
 document.getElementById("continue").addEventListener("click", function() {
-    return location.replace("file:///C:/Users/conno/Desktop/github/ChooseYourAdventure/public/gametest.html")
+    return window.location.href = "./bandersnatch.html";
 })
