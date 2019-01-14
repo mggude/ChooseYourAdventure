@@ -4,6 +4,7 @@ var score = parseInt(window.localStorage.getItem("score"));
 var currentScene;
 var currentCharacterValue;
 var userInput;
+var userChoiceText;
 
 function determineScene () {
     currentScene = window.localStorage.getItem("currentSceneId");
@@ -65,7 +66,6 @@ function populatePage() {
     var imageTwoVar = new Image(600, 600);
     var imageOneText = characterArray[currentCharacterValue].scene[currentScene].choiceOne;
     var imageTwoText = characterArray[currentCharacterValue].scene[currentScene].choiceTwo;
-    console.log(imageOneText, imageTwoText);
     imageOneVar.src = characterArray[currentCharacterValue].scene[currentScene].choiceOneImg;
     imageTwoVar.src = characterArray[currentCharacterValue].scene[currentScene].choiceTwoImg;
     document.getElementById("optionOneText").innerText = imageOneText;
@@ -75,38 +75,46 @@ function populatePage() {
 }
 
 function points () {
-    console.log("points beginning: " + score);
+    // console.log("points beginning: " + score);
     var newPoints = parseInt(100 * questionTimer);
-    console.log("newPoints: " + newPoints);
-    console.log("score: " + score)
+    // console.log("newPoints: " + newPoints);
+    // console.log("score: " + score)
     score = parseInt(newPoints + score);
     console.log("updated points: " + newPoints);
     localStorage.setItem("score", score);
 }
 
 function checkAnswer () {
-    // on click of a option#Class, compare option#Text to charArray....correctAnswer
-        // stop timer, run score
-        // if correct
-            // add points to local storage
-            // add 1 to local storage currentSceneId
-            // go to game.html
-        // if incorrect
-            // put text on Bandersnatch page
-            // render a button for play again
-                // reset local storage values
-                // bring to homepage
+    var correctAnswerText;
+    var wrongAnswerText;
 
     if (userInput === characterArray[currentCharacterValue].scene[currentScene].correctAnswer) {
         console.log("Correct answer!");
-
+        console.log("You chose: " + userChoiceText);
+        correctAnswerText = characterArray[currentCharacterValue].scene[currentScene].answerTrue
         clearInterval(intervalId);
         points();
-        return window.location.href = "./game.html";
+        document.getElementById("continue").style.visibility = "visible";
+        document.getElementById("leaderboard").style.visibility = "hidden";
+        renderModal (userChoiceText, correctAnswerText);
+
     } else if (userInput !== characterArray[currentCharacterValue].scene[currentScene].correctAnswer) {
         console.log("WRONG answer!");
+        console.log("You chose: " + userChoiceText);
+        wrongAnswerText = characterArray[currentCharacterValue].scene[currentScene].answerFalse
         clearInterval(intervalId);
+        document.getElementById("leaderboard").style.visibility = "visible";
+        document.getElementById("continue").style.visibility = "hidden";
+        renderModal (userChoiceText, wrongAnswerText);
     }
+}
+
+function renderModal (decision, modalText) {
+    document.getElementById("id01").style.display="block";
+        var displayModalDecision = document.createTextNode(decision);
+        var displayModalText = document.createTextNode(modalText);
+        document.getElementById("modalHeader").appendChild(displayModalDecision);
+        return document.getElementById("modalBody").appendChild(displayModalText);
 }
 
 var characterArray = [
@@ -140,8 +148,8 @@ var characterArray = [
                 answerFalse: "You decide to make a gallop to the subway. Strangely, there is not a person in sight! The subway pulls up like clockwork and you begin to board. As you enter the train, you have a hard time fitting thanks to your massive Giraffe body. You manage to fit your body in, but as you move your head inside the train, the doors shut, locking your 8ft. Neck and head outside! A chime plays and the train rapidly starts to move. Without another moment’s memory, your head smashes into the confined tunnel, you become rubber-necked and your head separates from your body, releasing exuberant amounts of ‘glitter’ all over and your body drops lifelessly to the ground.This means you’re dead....",
                 choiceOne: "Margaritas and Nachos",
                 choiceTwo: "Continue Running!",
-                choiceOneImg: "./assets/images/snatch_images/YRB_snatch.png",
-                choiceTwoImg: "./assets/images/snatch_images/subway_snatch.png",
+                choiceOneImg: "./assets/images/snatch_images/subway_snatch.png",
+                choiceTwoImg: "./assets/images/snatch_images/forest_snatch.png",
                 incorrectResult: 0,
                 correctAnswer: "choiceTwo",
                 correct: true,
@@ -155,8 +163,8 @@ var characterArray = [
                 answerFalse: "You flip off the cooing owl with your hoof and follow the smarter, path with yellow bricks. After walking for an hour or two, you clear the forest and see an royal emerald kingdom in the distance. You stop in your spot and realize that there are likely people that would recognize that you were a 20ft Giraffe and would call that stupid, William MonteHue Zoo-Keeper. As you turn around, you are blocked by a gaggle of Munchkins. They resemble a political figure with their orange-faces and disproportionate bodies… Oh no… they are Munchkins! Just as you try to get away, they pull out a knife while saying ‘The Wizard would certainly love a jacket made of this beautiful spotted fur!’. They begin to stab you until all of your Giraffe-glitter covers the yellow bricks. You go unconscious and become a wardrobe piece.",
                 choiceOne: "Go into Creepy Forest",
                 choiceTwo: "Follow the Yellow Brick Road",
-                choiceOneImg: "./assets/images/snatch_images/stay_snatched.png",
-                choiceTwoImg: "./assets/images/snatch_images/stay_snatched.png",
+                choiceOneImg: "./assets/images/snatch_images/scary_snatch.png",
+                choiceTwoImg: "./assets/images/snatch_images/YBR_snatch.png",
                 incorrectResult: 0,
                 correctAnswer: "choiceOne",
                 correct: true,
@@ -170,8 +178,8 @@ var characterArray = [
                 answerFalse: "Upon sipping on the taste of water from a natural water spring, you feel a slight tingle in your bum. Upon turning around, you recognized a red-feathered blow dart hanging from your rear end. You look around in confusion when you catch a glimpse of Zoo-Keeper William MonteHue in the distance. Your vision begins to blur and you awake the next morning to the sound of children outside of your old cage at the zoo. It was an adventure but it looks like you are here to stay.",
                 choiceOne: "Help Bear",
                 choiceTwo: "Take a Sip of Water",
-                choiceOneImg: "./assets/images/snatch_images/stay_snatched.png",
-                choiceTwoImg: "./assets/images/snatch_images/stay_snatched.png",
+                choiceOneImg: "./assets/images/snatch_images/freebear_snatch.png",
+                choiceTwoImg: "./assets/images/snatch_images/water_snatch.png",
                 incorrectResult: 0,
                 correctAnswer: "choiceOne",
                 correct: true,
@@ -181,21 +189,38 @@ var characterArray = [
     }
 ];
 // use left/right keys to select choice (onDownKey?) --> build validation
-// load next canvas
 
 document.getElementById("optionOneImg").addEventListener("click",function() {
     userInput = "choiceOne";
-    // console.log("switch to canvas page");
+    userChoiceText = characterArray[currentCharacterValue].scene[currentScene].choiceOne;
     // window.location.href = "./game.html";
     checkAnswer ();
 })
 
 document.getElementById("optionTwoImg").addEventListener("click",function() {
     userInput = "choiceTwo";
-    // console.log("switch to canvas page");
+    userChoiceText = characterArray[currentCharacterValue].scene[currentScene].choiceTwo;
     // window.location.href = "./game.html";
     checkAnswer ();
 })
+
+document.getElementById("continue").addEventListener("click",function() {
+    return window.location.href = "./game.html";
+});
+
+document.getElementById("leaderboard").addEventListener("click", function() {
+    var opts = {
+        method: "GET",
+        headers: {}
+    };
+    fetch("/gameOver", opts).then(function (response) {
+        console.log(response);
+        window.location = "/gameOver";
+    })
+    .catch(function (err){
+        console.log(err);
+    });
+ });
 
 gameTimer();
 determineScene();
