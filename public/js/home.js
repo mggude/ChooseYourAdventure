@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     console.log("DOM fully loaded and parsed");
         setLocalStoarge();
 });
-
 var characterArray = [
     {
         name: "Giraffe",
@@ -24,13 +23,11 @@ var characterArray = [
         ]
     }
 ];
-
 var charactersUnlocked = 0;
 var currentCharacter;
 var currentSceneId;
 var imgId = 0;
 var modalRendered = false;
-
 function setLocalStoarge() {
     console.log("Set Local Storage Called")
     localStorage.clear();
@@ -39,7 +36,6 @@ function setLocalStoarge() {
     localStorage.setItem("currentSceneId", 0);
     renderCharacterImages();
 }
-
 function Img(width, height, source) {
     this.image = new Image(width, height);
     this.image.src = source;
@@ -47,8 +43,6 @@ function Img(width, height, source) {
     this.image.setAttribute("class", "characterImg")
     this.image.setAttribute("style", "margin-left: 150px; margin-right: 150px; margin-top: 50px;")
     document.getElementById("images").appendChild(this.image);
-
-}
 
 function renderCharacterImages() {
     for (var i=0; i<characterArray.length; i++) {
@@ -62,7 +56,6 @@ function renderCharacterImages() {
         characterImg = new Img(200, 400, imgSource)
     }
 }
-
 document.addEventListener("click", function(value) {
     console.log("img id: ", value.target.id);
     if (!modalRendered) {
