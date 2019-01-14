@@ -1,14 +1,35 @@
-<h1>Top 5 Scores!</h1>
-<ol>
-    {{#each scores}}
-        <li>{{user}} | {{score}}</li>
-    {{/each}}
-</ol>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">ZooSnatch</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="leaderboard">LEADERBOARD</h2>
+            <ol>
+                {{#each scores}}
+                <li>{{user}} | {{score}}</li>
+                {{/each}}
+            </ol>
+        </div>
+        <div class="col-md-6">
+            <form>
+                <div class="form-group">
+                    <label for="userInitials">
+                        <div class="userScore">{{!-- WHAT NEEDS TO GO HERE FOR USERSCORE??? --}}</div>
+                        <h2 class="leaderboard text-center">Enter Your Initials to Claim Score</h2>
+                    </label>
+                    <input type="text" class="form-control" id="userInitials" aria-describedby="emailHelp" placeholder="Enter initials">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
 
-<form>
-  <div class="form-group">
-    <label for="userInitials">Enter Your Initials to Claim High Score</label>
-    <input type="text" class="form-control" id="userInitials" aria-describedby="emailHelp" placeholder="Enter initials">
-  </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<footer class="fixed-bottom text-center">
+    <div class="container">
+        <a href="home.html">Home</a>
+    </div>
+</footer>
