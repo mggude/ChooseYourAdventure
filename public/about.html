@@ -25,6 +25,7 @@
                 <h5 class="initials text-center">More paths and characters coming soon. Use the form
                     below to reach out to us with questions or comments!</h5>
             </div>
+
             <div class="col-md-6">
                 <form action="https://postmail.invotes.com/send" method="post" id="email_form">
                     <div class="form-group">
@@ -43,16 +44,22 @@
                     <input type="hidden" name="success_url" value=".?message=Email+Successfully+Sent%21&isError=0" />
                     <input type="hidden" name="error_url" value=".?message=Email+could+not+be+sent.&isError=1" />
                     <p>Powered by <a href="https://postmail.invotes.com" target="_blank">PostMail</a></p>
+
                     <button type="submit" class="btn btn-danger" id="submit_form" value="Submit">Submit</button>
+
+                
                 </form>
             </div>
+
             <div class="col-md-6">
                 <label for="creators">CREATORS</label>
                 <a href="https://github.com/asippel129" target="_blank">
                     <p class="creator form-control text-center btn btn-danger">Anna Sippel – back end –
                         www.annasippel.com</p>
                 </a>
+
                 <a href="https://github.com/Ccolon105" target="_blank">
+
                     <p class="creator form-control text-center btn btn-danger">Caleb Colon – back end –
                         www.calebcolon.com</p>
                 </a>
@@ -60,10 +67,12 @@
                     <p class="creator form-control text-center btn btn-danger">Connor Jaksik – front end –
                         www.connorjaksik.com</p>
                 </a>
+
                 <a href="https://github.com/mggude" target="_blank">
                     <p class="creator form-control text-center btn btn-danger">Grace Gude – front end –
                         www.gracegude.com</p>
                 </a>
+
                 <a href="https://github.com/kDurg" target="_blank">
                     <p class="creator form-control text-center btn btn-danger">Kyle Durigan – front end –
                         www.kyledurigan.com</p>
@@ -78,7 +87,6 @@
         </div>
     </footer>
 
-
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
@@ -86,7 +94,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
     <script>
-
+        var submitButton = document.getElementById("submit_form");
+        var form = document.getElementById("email_form");
+        form.addEventListener("submit", function (e) {
+            setTimeout(function() {
+                submitButton.value = "Sending...";
+                submitButton.disabled = true;
+            }, 1);
+        });
     </script>
 </body>
 

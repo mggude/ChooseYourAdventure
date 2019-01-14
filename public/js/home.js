@@ -48,8 +48,6 @@ function Img(width, height, source) {
     this.image.setAttribute("style", "margin-left: 150px; margin-right: 150px; margin-top: 50px;")
     document.getElementById("images").appendChild(this.image);
 
-}
-
 function renderCharacterImages() {
     for (var i=0; i<characterArray.length; i++) {
         imgId = i;
@@ -71,13 +69,20 @@ document.addEventListener("click", function(value) {
             localStorage.setItem("currentCharacter", value.target.id);
             modalRendered = true;
             document.getElementById("id01").style.display="block";
+
+            console.log(currentCharacter.question)
+            return document.getElementById("modalBody").innerHTML(currentCharacter.question);
+
             console.log(currentCharacter.question);
             var h = document.createElement("p");
             var t = document.createTextNode(currentCharacter.question);
             h.appendChild(t);
             return document.getElementById("modalBody").appendChild(h);
+
        } else {
            return alert("This character is locked, please select an unlocked character to play the game.");
        }
     }
+
 })
+
