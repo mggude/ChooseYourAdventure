@@ -33,7 +33,7 @@ app.get("/gameOver", function(req, res) {
     }).then(function(dbScores) {
         res.render("end", {scores: dbScores});
     })
-});
+  });
 
 
 
@@ -57,6 +57,7 @@ app.get("/gameOver", function(req, res) {
       });
   });
 };
+
 
 
 // PUT route for character updates (updating dead/free status, freeing new characters as a result of other animal dies, other morbidness)
