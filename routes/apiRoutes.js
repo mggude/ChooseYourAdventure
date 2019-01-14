@@ -5,24 +5,27 @@
 
 // Dependencies
 // =============================================================
-// commented out because this var does not exist at the moment-cc
-// var data = require("../data/animals.js");
-var db = require("../models");
+// var data = require("../public/js/app.js");
+var Score = require("../models/score.js");
 
 // === API ROUTES ===
-
 module.exports = function(app) {
-  // GET route to server character info (image link, questions, death status, etc)
+// ?? GET route to give initial character info for home screen display ??
+
+
+
+// GET route to server character info (image link, questions, death status, etc)
 // example route to get data about requested character (images, status, characters)
-  app.get("/api/:character", function(req, res) {
-	  res.json(data[req.params.character])
-  }); 
+// app.get("/api/:character", function(req, res) {
+// 	res.json(data[req.params.character])
+// }); 
 
 
 // GET route for high scores (top 5 from table)/GET route to serve up game over/leader board page
 //this is our one route that we are routing to handlebars SO we do not do an api/ because in this case we 
 //are just slapping on this info and not necessarily interacting with it
-  app.get("/gameOver", function(req, res) {
+
+app.get("/gameOver", function(req, res) {
     Score.findAll({
         //filter to get top 5
         order: [["score", "DESC"]],
@@ -53,7 +56,8 @@ module.exports = function(app) {
         res.json(err);
       });
   });
-
 };
+
+
 
 // PUT route for character updates (updating dead/free status, freeing new characters as a result of other animal dies, other morbidness)
