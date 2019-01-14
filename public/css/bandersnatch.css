@@ -1,0 +1,63 @@
+h1 {
+    font-family: 'Abril Fatface', cursive;
+    font-size: 15vw;
+    color: aqua;
+}
+h3, h5, .timerDiv {
+    font-family: 'Staatliches', cursive;
+}
+footer {
+    padding: 20px 10px;
+    font-size: 12px;
+    color: #ffffff;
+    text-align: center;
+    background: #353a3f;
+    border-top: 3px solid aqua;
+    height: 30px;
+  }
+body{
+    background: black;
+}
+/* #clearfix::after {
+    Content: "";
+    Display: block;
+    Clear: both;
+} */
+#displayQuestionText{
+    color: white;
+    text-align: center;
+}
+#optionOneImg, #optionTwoImg  {
+    width: 50%;
+    height: 600px;
+    background: grey;
+    float: left;
+    border-color: #fff;
+}
+#optionOneText, #optionTwoText{
+    color:white;
+    text-align: center
+}
+.timerDiv{
+    float: left;
+    color:white;
+}
+#timerCountdownBarRight, #timerCountdownBarLeft {
+    width: 600px;
+    height: 5px;
+}
+#timerCountdownBarRight div {
+    height: 100%;
+    color: #fff;
+    line-height: 5px; /* same as #progressBar height if we want text middle aligned */
+    width: 0;
+    background-color: #ff0022;
+}
+#timerCountdownBarLeft div {
+    height: 100%;
+    color: #fff;
+    line-height: 5px; /* same as #progressBar height if we want text middle aligned */
+    width: 0;
+    background-color: #ff0022;
+    display: block;
+}
