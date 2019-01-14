@@ -1,4 +1,4 @@
-* {
+*, h3 {
     font-family: 'Staatliches', cursive;
 }
 
@@ -27,13 +27,13 @@ h5 {
     height: 100vh;  
 }
 
-.character, #images {
+.character {
     height: 33vw;
 }
 
-.nav-link {
+/* .nav-link {
     padding: 20px 20px 0 20px;
-}
+} */
 
 
 
