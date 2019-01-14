@@ -10,7 +10,9 @@
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.2.1/cyborg/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-e4EhcNyUDF/kj6ZoPkLnURgmd8KW1B4z9GHYKb7eTG3w3uN8di6EBsN2wrEYr8Gc" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Staatliches" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="css/game.css">
+
 </head>
 
 <body>
@@ -19,6 +21,25 @@
         <a class="nav-link" href="about.html">About</a>
         <a class="nav-link" href="../views/end.handlebars">Leaderboard</a>
     </nav> -->
+<!--=========== This is the modal code ===============-->
+<div class="w3-container">
+  
+    <div id="id01" class="w3-modal">
+      <div class="w3-modal-content w3-animate-opacity w3-card-4">
+        <header class="w3-container w3-teal"> 
+          <span onclick="document.getElementById('id01').style.display='none'" 
+          class="w3-button w3-display-topright">&times;</span>
+          <h2>Modal Header</h2>
+        </header>
+        <div class="w3-container">
+          <p><span id="modalBody"></span></p>
+        </div>
+        <footer class="w3-container w3-teal">
+          <p>Modal Footer</p>
+        </footer>
+      </div>
+    </div>
+  </div>
 
     <div class="container">
         <div class="row">
@@ -37,7 +58,11 @@
             </div>
         </div>
     </div>
-
+    <footer class="fixed-bottom text-center">
+        <div class="container">
+            <a href="about.html">About</a>
+        </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
