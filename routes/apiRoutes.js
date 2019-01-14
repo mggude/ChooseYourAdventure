@@ -6,7 +6,7 @@
 // Dependencies
 // =============================================================
 // var data = require("../public/js/app.js");
-var Score = require("../models/score.js");
+var db = require("../models");
 
 // === API ROUTES ===
 module.exports = function(app) {
@@ -26,7 +26,7 @@ module.exports = function(app) {
 //are just slapping on this info and not necessarily interacting with it
 
 app.get("/gameOver", function(req, res) {
-    Score.findAll({
+    db.Score.findAll({
         //filter to get top 5
         order: [["score", "DESC"]],
         limit: 5
@@ -60,4 +60,3 @@ app.get("/gameOver", function(req, res) {
 
 
 
-// PUT route for character updates (updating dead/free status, freeing new characters as a result of other animal dies, other morbidness)
