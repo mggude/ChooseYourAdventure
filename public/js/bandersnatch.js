@@ -1,8 +1,9 @@
 var intervalId;
 var questionTimer = 10;
-var score = 0;
+var score = parseInt(window.localStorage.getItem("score"));
 var currentScene;
 var currentCharacterValue;
+var userInput;
 
 function determineScene () {
     currentScene = window.localStorage.getItem("currentSceneId");
@@ -37,13 +38,15 @@ function gameTimer () {
     startProgressBar ()
     intervalId = setInterval (decrement, 1000);
     document.getElementById("timerCountdownText").innerHTML = questionTimer;
-    function decrement () {
-        questionTimer--;
-        document.getElementById("timerCountdownText").innerHTML = questionTimer;
-        startProgressBar ()
-        if (questionTimer ===0) {
-            clearInterval(intervalId);
-        }
+    // decrement ();
+}
+
+function decrement () {
+    questionTimer--;
+    document.getElementById("timerCountdownText").innerHTML = questionTimer;
+    startProgressBar ()
+    if (questionTimer ===0) {
+        clearInterval(intervalId);
     }
 }
 
@@ -71,19 +74,38 @@ function populatePage() {
     document.getElementById("optionTwoImg").appendChild(imageTwoVar);
 }
 
-function score () {
+function points () {
     console.log("points beginning: " + score);
-    score = parseInt(score + (100 * questionTimer));
-    document.getElementById("scoreDisplay").textContent = score;
-    console.log("updated points: " + score);
-    // how to update score to app.js global variable?
+    var newPoints = parseInt(100 * questionTimer);
+    console.log("newPoints: " + newPoints);
+    console.log("score: " + score)
+    score = parseInt(newPoints + score);
+    console.log("updated points: " + newPoints);
+    localStorage.setItem("score", score);
 }
 
-document.getElementById("optionOneImg").addEventListener("click",function() {
-    console.log("switch to canvas page");
-    window.location.href = "./game.html";
-})
+function checkAnswer () {
+    // on click of a option#Class, compare option#Text to charArray....correctAnswer
+        // stop timer, run score
+        // if correct
+            // add points to local storage
+            // add 1 to local storage currentSceneId
+            // go to game.html
+        // if incorrect
+            // put text on Bandersnatch page
+            // render a button for play again
+                // reset local storage values
+                // bring to homepage
 
+    if (userInput === characterArray[currentCharacterValue].scene[currentScene].correctAnswer) {
+        console.log("Correct answer!");
+        clearInterval(intervalId);
+        points();
+    } else if (userInput !== characterArray[currentCharacterValue].scene[currentScene].correctAnswer) {
+        console.log("WRONG answer!");
+        clearInterval(intervalId);
+    }
+}
 
 var characterArray = [
     {
@@ -156,10 +178,23 @@ var characterArray = [
         ]
     }
 ];
-// Decide on current question
-// pull text and images from app.js
 // use left/right keys to select choice (onDownKey?) --> build validation
 // load next canvas
+
+document.getElementById("optionOneImg").addEventListener("click",function() {
+    userInput = "choiceOne";
+    // console.log("switch to canvas page");
+    // window.location.href = "./game.html";
+    checkAnswer ();
+})
+
+document.getElementById("optionTwoImg").addEventListener("click",function() {
+    userInput = "choiceTwo";
+    // console.log("switch to canvas page");
+    // window.location.href = "./game.html";
+    checkAnswer ();
+})
+
 gameTimer();
 determineScene();
 populatePage();
