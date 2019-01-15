@@ -105,12 +105,12 @@ function checkAnswer () {
         correctAnswerText = characterArray[currentCharacterValue].scene[currentScene].answerTrue
         clearInterval(intervalId);
         points();
-        if (window.localStorage.getItem("currentSceneId") > 4) {
+        if (window.localStorage.getItem("currentSceneId") >= 3) {
             document.getElementById("leaderboard").style.visibility = "visible";
             document.getElementById("continue").style.visibility = "hidden";
             document.getElementById("makedecision").style.visibility = "hidden";
-            renderModal (userChoiceText, wrongAnswerText);
-        } else if (window.localStorage.getItem("currentSceneId") < 4) {
+            renderModal (userChoiceText, correctAnswerText);
+        } else if (window.localStorage.getItem("currentSceneId") < 3) {
             document.getElementById("continue").style.visibility = "visible";
             document.getElementById("leaderboard").style.visibility = "hidden";
             document.getElementById("makedecision").style.visibility = "hidden";
@@ -130,6 +130,8 @@ function checkAnswer () {
 }
 
 function renderModal (decision, modalText) {
+    document.getElementById("modalHeader").innerHTML = "";
+    document.getElementById("modalBody").innerHTML = "";
     document.getElementById("id01").style.display="block";
         var displayModalDecision = document.createTextNode(decision);
         var displayModalText = document.createTextNode(modalText);
@@ -220,6 +222,7 @@ document.getElementById("optionOneImg").addEventListener("click",function() {
     userInput = "choiceOne";
     userChoiceText = characterArray[currentCharacterValue].scene[currentScene].choiceOne;
     // window.location.href = "./game.html";
+    console.log("user choice text", userChoiceText);
     checkAnswer ();
 })
 

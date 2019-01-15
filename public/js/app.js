@@ -106,7 +106,7 @@ function selectScene() {
 function createScene() {
     snatchRendered = false;
     characterComponent = new Component(240, 240, currentCharacter.staticImg, 10, 505, "image");
-    endPage = new Component(1, 500, currentCharacter.staticImg, 1401, 0, "image");
+    endPage = new Component(1, 800, currentCharacter.staticImg, 1501, 0, "image");
     background = new Component(1500, 800, currentScene.backgroundImg, 0, 0, "background");
     gameCanvas.start();
 }
