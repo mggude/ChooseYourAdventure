@@ -4,6 +4,16 @@
             <h1 class="text-center">ZooSnatch</h1>
         </div>
     </div>
+
+
+     <div class="row">
+         <div class="col-md-12">
+             <h2 id="scoreBanner">Your Score: </h2>
+             <h2><span id="individualScore"></span></h2>
+         </div>
+     </div>
+
+
     <div class="row">
         <div class="col-md-6">
             <h2 class="leaderboard">LEADERBOARD</h2>
@@ -17,7 +27,7 @@
             <form class = "create-form">
                 <div class="form-group">
                     <label for="userInitials">
-                        <div class="userScore">{{!-- WHAT NEEDS TO GO HERE FOR USERSCORE??? --}}</div>
+                        <div class="userScore"></div>
                         <h2 class="leaderboard text-center">Enter Your Initials to Claim Score</h2>
                     </label>
                     <input type="text" class="form-control" id="userInitials" aria-describedby="emailHelp" placeholder="Enter initials">
@@ -39,6 +49,7 @@
     document.addEventListener("DOMContentLoaded", function (event) {
         console.log("javascript called");
         score = localStorage.getItem("score");
+        document.getElementById("individualScore").innerHTML = score;
         console.log(score);
     });
 
