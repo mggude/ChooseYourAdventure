@@ -146,7 +146,9 @@ var characterArray = [
                 correctAnswer: "choiceOne",
                 correct: true,
             },
-            {
+
+            // question not showing up
+            {   
                 used: false,
                 backgroundImg: "./assets/images/BG_images/cityBG.png",
                 question: "You’ve made it out! Feeling exhilarated, you decide to get as far away from the zoo as possible. You notice a sign for the Subway. You’ve heard tales of taking the subway to a place called “Mexico” where the beaches are warm, animals roam free and the margaritas flow like wine. Before you reach the subway, you notice a forest beyond the city. Do you go to Viva Mexico or run to the nearby forest to continue your new freedom?",
@@ -161,11 +163,13 @@ var characterArray = [
                 correct: true,
 
             },
+
+            // question not showing up
             {
                 used: false,
                 backgroundImg: "./assets/images/BG_images/forestBG.png",
-                question: "Being in the forest brings a tear of happiness to your eye, memories of eating antidepressant-infused hay flood your memories. You fantasize about finding another Giraffe who has spots-in-all-the-right-places, and dream of making a wobbly-legged baby Giraffe and living happily ever after together... until you approach a split in the road.One path has a cold breeze, grey trees without leaves and the stereotypical hooting owl with beady eyes. The other path continues with lush vegetation and is paved with a yellow brick road… Which path do you take?",
-                answerTrue: "You decide to take the road that Zoo-Keepers are less likely to go down if they come searching. As you skittishly walk through the scary forest entrance, you look around and start to recognize the smell of faint smoke. With the moonlight highlighting the dead trees, you realize that this part of the forest is actually just charred from the wildfires. You continue on for another mile and the forest returns to a lush forest with endless amounts of trees and leafs. Surely you’ve made the right decision. You become exhausted as your adrenaline wears off and you lay down off the trail to catch some quick sleep until dawn. ",
+                question: "You're in the forest! With a tear of happiness in your eye, memories of eating antidepressant-infused hay flood your memories. You fantasize about finding another Giraffe who has spots-in-all-the-right-places, and dream of making a wobbly-legged baby Giraffe and living happily ever after together... until you approach a split in the road. One path has a cold breeze, grey trees without leaves and the stereotypical hooting owl with beady eyes. The other path continues with lush vegetation and is paved with a yellow brick road… Which path do you take?",
+                answerTrue: "You take the road-less-traveled to avoid Zoo-Keeper William Montague. As you tiptoe through the scary forest, you hear what sounds like a forest stream and suddenly feel parched... ",
                 answerFalse: "You flip off the hooting owl with your hoof and follow the safer path with yellow bricks. Eventually, you clear the forest and see a royal emerald kingdom in the distance. You stop dead in your tracks, realizing someone might report seeing a 20ft Giraffe to the zoo. You try to turn around but you are blocked by a gaggle of Munchkins. They resemble a certain political figure, with orange-faces and disproportionate bodies… you try to run but they pull out a knife and sing, in unison “The Wizard will love a coat made of your beautiful spotted fur!” They stab you repeatedly until Giraffe-glitter covers the yellow bricks. You die and become a wardrobe piece.",
                 choiceOne: "Go into Creepy Forest",
                 choiceTwo: "Follow the Yellow Brick Road",
@@ -176,10 +180,12 @@ var characterArray = [
                 correct: true,
 
             },
+
+            // question not showing up
             {
                 used: false,
                 backgroundImg: "./assets/images/BG_images/scaryBG.png",
-                question: "As dawn arrives, the sun slowly rises with beautiful golden rays shining through the trees. The birds sing with the happiness that only freedom can give. You stand up and continue your journey. You arrive to an untouched sanctuary with a calm lake in the middle of the opening. As your dry tongue pulls you to the lake for a drink of water, you hear a moaning in the distance. Confused, you walk towards the moaning and see a bear stuck in a trap. You’re faced with the decision to either quench your thirst or help the bear get free, what do you do?",
+                question: "As you walk you become more and more thirsty. You finally come upon a river stream... but what's that? It's a bear in trap...  You’re faced with the decision to either quench your thirst or help the bear get free, what do you do?",
                 answerTrue: "As thirsty as you are, you cannot even think about drinking water. You approach the bear and kick down on the trap. The bear tumbles to the ground in relief. He stands up and hugs you for your bravery and help. Suddenly, his claws accidentally scrape you and a few drops of Giraffe-glitter trickle down your neck. Bear’s eyes pop open with the sweet smell of glitter and he cannot contain his instincts to eat. He attacks and eats you with a tear in his eye. Giraffe is dead. BEAR IS NOW UNLOCKED TO PLAY!",
                 answerFalse: "Upon sipping water from the forest stream, you feel a slight tingle upon your bum. You turn and see a red-feathered blow dart hanging from your rear end. You look around in confusion and catch a glimpse of Zoo-Keeper William Montague in the distance. Your vision begins to blur and you awake the next morning to the sound of children outside of your old cage at the zoo. It was quite an adventure but it looks like you are here to stay… for now… ",
                 choiceOne: "Help Bear",
