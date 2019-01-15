@@ -5,6 +5,7 @@
         </div>
     </div>
 
+
     <div class="row">
         <div class="col-md-4">
             <form class="create-form">
@@ -12,6 +13,7 @@
                     <label for="userInitials">
                         <div class="userScore"></div>
                         <h2 class="leaderboard text-center">Enter Your Initials</h2>
+
                     </label>
                     <input type="text" class="form-control" id="userInitials" aria-describedby="emailHelp" placeholder="Enter initials">
                 </div>
@@ -39,3 +41,41 @@
         <a href="home.html">Home</a>
     </div>
 </footer>
+
+<script type="text/javascript">
+    var score;
+    document.addEventListener("DOMContentLoaded", function (event) {
+        console.log("javascript called");
+        score = localStorage.getItem("score");
+        document.getElementById("individualScore").innerHTML = score;
+        console.log(score);
+    });
+
+    document.getElementById("submitButton").addEventListener("click", function (value) {
+        var userInitials = document.getElementById("userInitials").value;
+        console.log(userInitials);
+    });
+
+    $(".create-form").on("submit", function (event) {
+            // Make sure to preventDefault on a submit event.
+            event.preventDefault();
+            console.log("submitted")
+            var userInfo = {
+                user: $("#userInitials").val().trim(),
+                score: score
+            };
+            // Send the POST request.
+            $.ajax("/api/newUserScore", {
+                type: "POST",
+                data: userInfo
+            }).then(
+                function () {
+                    console.log("created user");
+                    // Reload the page to get the updated list
+                    location.reload();
+                }
+            );
+        });
+
+
+</script>
