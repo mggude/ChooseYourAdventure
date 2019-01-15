@@ -14,7 +14,7 @@
             </ol>
         </div>
         <div class="col-md-6">
-            <form>
+            <form class = "create-form">
                 <div class="form-group">
                     <label for="userInitials">
                         <div class="userScore">{{!-- WHAT NEEDS TO GO HERE FOR USERSCORE??? --}}</div>
@@ -22,7 +22,7 @@
                     </label>
                     <input type="text" class="form-control" id="userInitials" aria-describedby="emailHelp" placeholder="Enter initials">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button id="submitButton" type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
@@ -33,3 +33,40 @@
         <a href="home.html">Home</a>
     </div>
 </footer>
+
+<script type="text/javascript">
+    var score;
+    document.addEventListener("DOMContentLoaded", function (event) {
+        console.log("javascript called");
+        score = localStorage.getItem("score");
+        console.log(score);
+    });
+
+    document.getElementById("submitButton").addEventListener("click", function (value) {
+        var userInitials = document.getElementById("userInitials").value;
+        console.log(userInitials);
+    });
+
+    $(".create-form").on("submit", function (event) {
+            // Make sure to preventDefault on a submit event.
+            event.preventDefault();
+            console.log("submitted")
+            var userInfo = {
+                user: $("#userInitials").val().trim(),
+                score: score
+            };
+            // Send the POST request.
+            $.ajax("/api/newUserScore", {
+                type: "POST",
+                data: userInfo
+            }).then(
+                function () {
+                    console.log("created user");
+                    // Reload the page to get the updated list
+                    location.reload();
+                }
+            );
+        });
+
+
+</script>

@@ -43,18 +43,11 @@ app.get("/gameOver", function(req, res) {
     // create takes an argument of an object describing the item we want to
     // insert into our table. In this case we just we pass in an object with a user
     // and score property (req.body)
-    db.Score.create({
-      user: req.body.text,
-      score: req.body.complete
-    }).then(function(dbScores) {
+    console.log(req.body);
+    db.Score.create(req.body).then(function(dbScores) {
       // We have access to the new user and score as an argument inside of the callback function
       res.json(dbScores);
     })
-      .catch(function(err) {
-      // Whenever a validation or flag fails, an error is thrown
-      // We can "catch" the error to prevent it from being "thrown", which could crash our node app
-        res.json(err);
-      });
   });
 };
 
