@@ -6,16 +6,25 @@
     </div>
 
 
-     <div class="row">
-         <div class="col-md-12">
-             <h2 id="scoreBanner">Your Score: </h2>
-             <h2><span id="individualScore"></span></h2>
-         </div>
-     </div>
-
-
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
+            <form class="create-form">
+                <div class="form-group">
+                    <label for="userInitials">
+                        <div class="userScore"></div>
+                        <h2 class="leaderboard text-center">Enter Your Initials</h2>
+
+                    </label>
+                    <input type="text" class="form-control" id="userInitials" aria-describedby="emailHelp" placeholder="Enter initials">
+                </div>
+                <button id="submitButton" type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <h2 id="scoreBanner" class="leaderboard">Your Score: </h2>
+            <h2><span id="individualScore"></span></h2>
+        </div>
+        <div class="col-md-4">
             <h2 class="leaderboard">LEADERBOARD</h2>
             <ol>
                 {{#each scores}}
@@ -23,19 +32,8 @@
                 {{/each}}
             </ol>
         </div>
-        <div class="col-md-6">
-            <form class = "create-form">
-                <div class="form-group">
-                    <label for="userInitials">
-                        <div class="userScore"></div>
-                        <h2 class="leaderboard text-center">Enter Your Initials to Claim Score</h2>
-                    </label>
-                    <input type="text" class="form-control" id="userInitials" aria-describedby="emailHelp" placeholder="Enter initials">
-                </div>
-                <button id="submitButton" type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
     </div>
+
 </div>
 
 <footer class="fixed-bottom text-center">
