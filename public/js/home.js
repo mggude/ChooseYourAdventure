@@ -71,11 +71,11 @@ document.addEventListener("click", function(value) {
             localStorage.setItem("currentCharacter", value.target.id);
             modalRendered = true;
             document.getElementById("id01").style.display="block";
-            console.log(currentCharacter.question);
+            // console.log(currentCharacter.question);
             var characterName = document.createTextNode(currentCharacter.name)
             var question = document.createTextNode(currentCharacter.question);
-            document.getElementById("modalHeader").appendChild(characterName);
-            return document.getElementById("modalBody").appendChild(question);
+            // document.getElementById("modalHeader").appendChild(characterName);
+            // return document.getElementById("modalBody").appendChild(question);
        } else {
            return alert("This character is locked, please select an unlocked character to play the game.");
        }

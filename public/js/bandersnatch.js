@@ -1,3 +1,13 @@
+document.addEventListener("DOMContentLoaded", function (event) {
+    console.log("DOM fully loaded and parsed");
+    var res = "";
+    preLoadQuestion = characterArray[currentCharacterValue].scene[currentScene].question;
+    document.getElementById("leaderboard").style.visibility = "hidden";
+    document.getElementById("continue").style.visibility = "hidden";
+    document.getElementById("makedecision").style.visibility = "visible";
+    renderModal(res, preLoadQuestion);
+});
+
 var intervalId;
 var questionTimer = 10;
 var score = parseInt(window.localStorage.getItem("score"));
@@ -5,6 +15,7 @@ var currentScene;
 var currentCharacterValue;
 var userInput;
 var userChoiceText;
+var preLoadQuestion;
 
 function determineScene () {
     currentScene = window.localStorage.getItem("currentSceneId");
@@ -94,13 +105,15 @@ function checkAnswer () {
         correctAnswerText = characterArray[currentCharacterValue].scene[currentScene].answerTrue
         clearInterval(intervalId);
         points();
-        if (window.localStorage.getItem("currentSceneId") >= 3) {
+        if (window.localStorage.getItem("currentSceneId") > 4) {
             document.getElementById("leaderboard").style.visibility = "visible";
             document.getElementById("continue").style.visibility = "hidden";
+            document.getElementById("makedecision").style.visibility = "hidden";
             renderModal (userChoiceText, wrongAnswerText);
-        } else if (window.localStorage.getItem("currentSceneId")< 3) {
+        } else if (window.localStorage.getItem("currentSceneId") < 4) {
             document.getElementById("continue").style.visibility = "visible";
             document.getElementById("leaderboard").style.visibility = "hidden";
+            document.getElementById("makedecision").style.visibility = "hidden";
             renderModal (userChoiceText, correctAnswerText);
         }
 
@@ -111,6 +124,7 @@ function checkAnswer () {
         clearInterval(intervalId);
         document.getElementById("leaderboard").style.visibility = "visible";
         document.getElementById("continue").style.visibility = "hidden";
+        document.getElementById("makedecision").style.visibility = "hidden";
         renderModal (userChoiceText, wrongAnswerText);
     }
 }
@@ -220,6 +234,11 @@ document.getElementById("continue").addEventListener("click",function() {
     return window.location.href = "./game.html";
 });
 
+document.getElementById("makedecision").addEventListener("click",function() {
+    document.getElementById("id01").style.display = "none";
+    gameTimer();
+});
+
 document.getElementById("leaderboard").addEventListener("click", function() {
     var opts = {
         method: "GET",
@@ -234,8 +253,7 @@ document.getElementById("leaderboard").addEventListener("click", function() {
     });
  });
 
-gameTimer();
+ 
+
 determineScene();
 populatePage();
-
-// local storage  - currentCharacter, currentSceneId (0-3)
