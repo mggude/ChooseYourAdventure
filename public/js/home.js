@@ -76,6 +76,8 @@ document.addEventListener("click", function(value) {
             var question = document.createTextNode(currentCharacter.question);
             // document.getElementById("modalHeader").appendChild(characterName);
             // return document.getElementById("modalBody").appendChild(question);
+            return location.replace("../bandersnatch.html")
+
        } else {
            return alert("This character is locked, please select an unlocked character to play the game.");
        }
