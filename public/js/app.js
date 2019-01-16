@@ -121,9 +121,12 @@ function renderSnatch() {
 //This function is called every 20 miliseconds to reflect any component position changes
 function upDateCanvas() {
     if (characterComponent.touching(endPage)) {
-        currentScene.used = true;
-        snatchRendered = true;
-        return renderSnatch();
+        if (!snatchRendered) {
+            currentScene.used = true;
+            snatchRendered = true;
+            return renderSnatch();
+        }
+       
     } else {
         gameCanvas.clear();
         background.newPos();
