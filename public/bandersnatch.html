@@ -27,15 +27,15 @@
             <div class="w3-modal-content w3-animate-opacity w3-card-4">
                 <header class="w3-container w3-teal">
                     <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-                    <h2>You Chose: <span id="modalHeader"></span></h2>
+                    <h2>Choose Your Adventure: <span id="modalHeader"></span></h2>
                 </header>
                 <div class="w3-container">
                     <p><span id="modalBody"></span></p>
                 </div>
                 <footer class="w3-container w3-teal">
-                    <button id="continue">Click To Continue</button>
-                    <button id="leaderboard">Go To Leaderboard</button>
-                    <button id="makedecision">Time To Make A Decision</button>
+                    <button class="snatchButton" id="continue">Click To Continue</button>
+                    <button class="snatchButton" id="makedecision">Click To Choose</button>
+                    <button class="snatchButton" id="leaderboard">Go To Leaderboard</button>
                 </footer>
             </div>
         </div>
@@ -88,7 +88,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div id="timerCountdownText"></div>
+                <!-- <div id="timerCountdownText"></div> -->
                 <div id="timerCountdownBarRight">
                     <div></div>
                 </div>
