@@ -68,3 +68,8 @@ body{
     background-color: #ff0022;
     display: block;
 }
+.snatchButton {
+    padding: 10px;
+    margin: 10px;
+}
+
