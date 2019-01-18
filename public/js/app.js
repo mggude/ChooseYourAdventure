@@ -27,6 +27,7 @@ var characterArray = [
                 incorrectResult: 0,
                 correctAnswer: "choiceOne",
                 correct: true,
+                signImg: "./assets/images/BG_images/roadSign.png",
             },
             {
                 used: false,
@@ -41,7 +42,7 @@ var characterArray = [
                 incorrectResult: 0,
                 correctAnswer: "choiceTwo",
                 correct: true,
-
+                signImg: "./assets/images/BG_images/woodSign.png",
             },
             {
                 used: false,
@@ -88,6 +89,7 @@ var userInput = "";
 var snatchRendered = false;
 var arrowKeyPressed = false;
 var gameText;
+var sign;
 
 //==========================Game Play Functions========================================================
 function selectCharacter() {
@@ -108,6 +110,7 @@ function createScene() {
     characterComponent = new Component(240, 240, currentCharacter.staticImg, 10, 505, "image");
     endPage = new Component(1, 800, currentCharacter.staticImg, 1501, 0, "image");
     background = new Component(1500, 800, currentScene.backgroundImg, 0, 0, "background");
+    sign = new Component(240, 200, currentScene.signImg, 1150, 560, "image");
     gameCanvas.start();
 }
 
@@ -134,14 +137,21 @@ function upDateCanvas() {
         characterComponent.speedX = 0;
         characterComponent.speedY = 0;
         if (arrowKeyPressed) {
+            sign.speedX = -2;
             background.speedX = -4;
             if (gameCanvas.key && gameCanvas.key == 37) {characterComponent.speedX = -5}
             if (gameCanvas.key && gameCanvas.key == 39) { characterComponent.speedX = 5; }
             if (gameCanvas.key && gameCanvas.key == 38) { characterComponent.speedY = -5; }
             if (gameCanvas.key && gameCanvas.key == 40) { characterComponent.speedY = 5; }
         } else {
+            sign.speedX = 0;
             background.speedX = 0;
         }
+        if (currentSceneId == 0 || currentSceneId == 1) {
+            sign.newPos();
+            sign.update();
+        }
+       
         characterComponent.newPos();
         characterComponent.update();
         endPage.newPos();
