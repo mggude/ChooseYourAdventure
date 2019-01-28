@@ -107,8 +107,7 @@ function selectScene() {
 
 function createScene() {
     snatchRendered = false;
-    characterComponent = new Component(240, 240, currentCharacter.staticImg, 10, 505, "image");
-    endPage = new Component(1, 800, currentCharacter.staticImg, 1501, 0, "image");
+    characterComponent = new Component(240, 240, currentCharacter.staticImg, 10, 505, "image", 1);
     background = new Component(1500, 800, currentScene.backgroundImg, 0, 0, "background");
     sign = new Component(240, 200, currentScene.signImg, 1150, 560, "image");
     gameCanvas.start();
@@ -123,29 +122,33 @@ function renderSnatch() {
 
 //This function is called every 20 miliseconds to reflect any component position changes
 function upDateCanvas() {
-    if (characterComponent.touching(endPage)) {
+    if (characterComponent.x > gameCanvas.canvas.width) {
         if (!snatchRendered) {
             currentScene.used = true;
             snatchRendered = true;
             return renderSnatch();
-        }
-       
+        } 
     } else {
         gameCanvas.clear();
         background.newPos();
         background.update();
+
         characterComponent.speedX = 0;
-        characterComponent.speedY = 0;
         if (arrowKeyPressed) {
-            sign.speedX = -2;
-            background.speedX = -4;
             if (gameCanvas.key && gameCanvas.key == 37) {characterComponent.speedX = -5}
             if (gameCanvas.key && gameCanvas.key == 39) { characterComponent.speedX = 5; }
-            if (gameCanvas.key && gameCanvas.key == 38) { characterComponent.speedY = -5; }
-            if (gameCanvas.key && gameCanvas.key == 40) { characterComponent.speedY = 5; }
+            if (gameCanvas.key && gameCanvas.key == 38) { characterComponent.speedY = -25; }
+            if (characterComponent.speedX > 0) {
+                sign.speedX = -2;
+                background.speedX = -4;
+            } else if (characterComponent.speedX < 0) {
+                sign.speedX = 2;
+                background.speedX = 4;
+            }
         } else {
             sign.speedX = 0;
             background.speedX = 0;
+            characterComponent.speedY = 0
         }
         if (currentSceneId == 0 || currentSceneId == 1) {
             sign.newPos();
@@ -154,8 +157,6 @@ function upDateCanvas() {
        
         characterComponent.newPos();
         characterComponent.update();
-        endPage.newPos();
-        endPage.update();
     }
 }
 //=====================================EVENT LISTENERS===========================================================
@@ -198,7 +199,7 @@ var gameCanvas = {
 };
 
 //====================================Component Constructor=======================================================================
-function Component(width, height, color, x, y, type) {
+function Component(width, height, color, x, y, type, gravity) {
     //Creates initial characters, backgrounds, components
     this.type = type;
     if (type == "image" || type == "background") {
@@ -211,6 +212,8 @@ function Component(width, height, color, x, y, type) {
     this.speedY = 0;
     this.x = x;
     this.y = y;
+    this.gravity = gravity || 0;
+    this.gravitySpeed = 0;
     //Updates the component to reflect any X or Y position changes
     this.update = function () {
         //Draws component images to the blank canvas
@@ -260,13 +263,24 @@ function Component(width, height, color, x, y, type) {
     }
     //this assigns new X/Y cordinates to the component reflecting any changes made by arrow key
     this.newPos = function () {
+        this.gravitySpeed += this.gravity;
         this.x += this.speedX;
-        this.y += this.speedY;
+        this.y += this.speedY + this.gravitySpeed;
         //creates loop for background
         if (this.type == "background") {
             if (this.x == -(this.width)) {
                 this.x = 0;
             }
+        }
+        if (this.type == "image") { this.hitBottom() };
+    }
+    this.hitBottom = function () {
+        var rockbottom = gameCanvas.canvas.height - (this.height);
+        if (this.y > rockbottom) {
+            gameActive = true;
+            this.y = rockbottom;
+            characterComponent.gravitySpeed = 0;
+
         }
     }
 }
